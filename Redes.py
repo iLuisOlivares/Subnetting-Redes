@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 def calcular_redes(bits):
 
     for i in range(bits):
@@ -50,8 +53,6 @@ octales = ip.split(".")
 
 redes_final =[]
 
-
-
 if int(octales[0]) <= 127:
     tipo = 'A'
     bits = 24
@@ -62,6 +63,7 @@ if int(octales[0]) <= 127:
         octal2 = i[8:16]    
         octal3 = i[16:24]
         redes_final.append( octales[0]+"."+str(binario_a_decimal(octal1))+"."+str(binario_a_decimal(octal2))+"."+str(binario_a_decimal(octal3)))
+
     
 
 elif int(octales[0])  <= 191:
@@ -83,9 +85,15 @@ elif int(octales[0]) <= 223:
     for i in redes_decimal:
         redes_final.append( octales[0]+"."+octales[1]+"."+octales[2]+"."+str(binario_a_decimal(i)))
 
-   
-print(redes_final) 
+
+index = range(1,len(redes_final)+ 1)
+df = pd.DataFrame(redes_final,index=index,columns=['SubRedes'])
+
+if len(df) > 150:
+    print(df.head(50)) 
+    print(df.tail(50)) 
+else:
+    print(df.head(150))
 
 
 print(f"La red es de tipo {tipo}.")
-
