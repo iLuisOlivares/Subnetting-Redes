@@ -49,24 +49,26 @@ sr = int(input("Digite el numero de sub redes: "))
 octales = ip.split(".")
 
 
-if octales[0] <= 127:
+if int(octales[0]) <= 127:
     tipo = 'A'
     bits = 24
     redes_decimal = calcular_redes(bits)
 
     redes_final = []
     print(redes_decimal[1])
-
+    print( redes_decimal[1][0:8],
+          redes_decimal[1][8:16]  ,  
+          redes_decimal[1][16:24])
     for i in redes_decimal:
-        octal1 = i[0:7]
-        octal2 = i[7:15]    
-        octal3 = i[15:24]
+        octal1 = i[0:8]
+        octal2 = i[8:16]    
+        octal3 = i[16:24]
         redes_final.append( octales[0]+"."+str(binario_a_decimal(octal1))+"."+str(binario_a_decimal(octal2))+"."+str(binario_a_decimal(octal3)))
 
     print(redes_final)
     
 
-elif octales[0] <= 191:
+elif int(octales[0])  <= 191:
     tipo = 'B'
     bits = 16
     redes_decimal = calcular_redes(bits)
@@ -79,7 +81,7 @@ elif octales[0] <= 191:
 
     print(redes_final)
 
-elif octales[0] <= 223:
+elif int(octales[0]) <= 223:
     tipo = 'C'
     bits = 8
     redes_decimal = calcular_redes(bits)
