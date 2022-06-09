@@ -7,3 +7,11 @@ se solicita:
 
 **El Algoritmo devuelve**
 Un listado de las subredes en orden, realizando los respectivos saltos
+
+**Librerias necesarias**
+Es necesario tener pandas
+` ` `
+pip3 install pandas
+` ` `
+
+

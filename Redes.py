@@ -1,4 +1,18 @@
+# 178.49.0.0/16
+#Asignadas -> 536
+#Asignar -> 632
+
+#Primos divisibles por el mismo 
+
 import pandas as pd
+import csv
+
+def convertir_csv(df,nombre="redes.csv"):
+    df.to_csv(nombre, index=True, sep="\t")
+
+def isPrimo(numero):
+    count = 0
+
 
 
 def calcular_redes(bits):
@@ -89,11 +103,13 @@ elif int(octales[0]) <= 223:
 index = range(1,len(redes_final)+ 1)
 df = pd.DataFrame(redes_final,index=index,columns=['SubRedes'])
 
+
 if len(df) > 150:
     print(df.head(50)) 
     print(df.tail(50)) 
 else:
     print(df.head(150))
 
+convertir_csv(df)
 
 print(f"La red es de tipo {tipo}.")
